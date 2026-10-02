@@ -1,0 +1,137 @@
+@import "tailwindcss";
+
+@theme {
+  --font-body: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-heading: "Space Grotesk", "DM Sans", sans-serif;
+
+  --color-background: oklch(14% 0.035 255);
+  --color-foreground: oklch(98% 0.004 95);
+  --color-card: oklch(19% 0.04 255);
+  --color-card-foreground: oklch(98% 0.004 95);
+  --color-popover: oklch(19% 0.04 255);
+  --color-popover-foreground: oklch(98% 0.004 95);
+  --color-primary: oklch(67% 0.19 245);
+  --color-primary-foreground: oklch(99% 0.004 95);
+  --color-secondary: oklch(23.5% 0.045 255);
+  --color-secondary-foreground: oklch(98% 0.004 95);
+  --color-muted: oklch(22% 0.035 255);
+  --color-muted-foreground: oklch(78% 0.035 245);
+  --color-accent: oklch(72% 0.16 220);
+  --color-accent-foreground: oklch(99% 0.004 95);
+  --color-destructive: oklch(57.7% 0.245 27.325);
+  --color-border: oklch(36% 0.05 255);
+  --color-input: oklch(36% 0.05 255);
+  --color-ring: oklch(72% 0.18 245);
+
+  --radius: 0.5rem;
+}
+
+body {
+  margin: 0;
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-body);
+}
+
+a {
+  color: inherit;
+}
+
+.eyebrow {
+  font-family: var(--font-heading);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 0.68rem;
+}
+
+.display {
+  font-family: var(--font-heading);
+  letter-spacing: -0.055em;
+}
+
+.grid-line {
+  background-image: linear-gradient(
+    to right,
+    color-mix(in oklch, var(--color-primary) 13%, transparent) 1px,
+    transparent 1px
+  );
+  background-size: 64px 100%;
+}
+
+.section-rule {
+  border-top: 1px solid #ffffff21;
+}
+
+.hover-lift {
+  transition:
+    transform 0.22s,
+    border-color 0.22s,
+    background-color 0.22s,
+    box-shadow 0.22s;
+}
+.hover-lift:hover {
+  transform: translateY(-2px);
+}
+
+.workflow-stage {
+  perspective: 900px;
+  min-height: 17rem;
+  position: relative;
+}
+.workflow-beam {
+  background: linear-gradient(180deg, transparent, var(--color-primary), transparent);
+  opacity: 0.75;
+  width: 1px;
+  position: absolute;
+  top: 1.35rem;
+  bottom: 1.35rem;
+  left: 2.1rem;
+}
+.workflow-nodes {
+  z-index: 1;
+  gap: 0.65rem;
+  display: grid;
+  position: relative;
+}
+.workflow-node {
+  text-align: left;
+  border: 1px solid color-mix(in oklch, var(--color-border) 80%, transparent);
+  grid-template-columns: 2.5rem 1fr auto;
+  align-items: center;
+  gap: 0.8rem;
+  width: 100%;
+  padding: 0.8rem 0.9rem;
+  display: grid;
+  border-radius: var(--radius);
+  background: var(--color-card);
+}
+.workflow-node.is-active {
+  box-shadow:
+    0 0 0 1px color-mix(in oklch, var(--color-primary) 22%, transparent),
+    0 14px 34px color-mix(in oklch, var(--color-primary) 12%, transparent);
+}
+.workflow-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  color: var(--color-primary);
+  background: color-mix(in oklch, var(--color-primary) 13%, transparent);
+  border-radius: 0.65rem;
+  place-items: center;
+  display: grid;
+}
+.workflow-check {
+  min-width: 1.1rem;
+  color: var(--color-primary);
+  font-size: 0.8rem;
+}
+
+.liquid-glass-strong {
+  background-blend-mode: luminosity;
+  backdrop-filter: blur(50px);
+  background: #ffffff03;
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    4px 4px 4px #0000000d,
+    inset 0 1px 1px #ffffff1f;
+}
