@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Checkout | Veteran Webworks</title>
+  <link rel="icon" href="/favicon.png" type="image/png" />
+<meta name="description" content="Complete your domain registration — powered by Veteran Webworks." />
+<meta name="theme-color" content="#07152b" />
+<link rel="canonical" href="https://goveteranwebworks.com/checkout" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg: oklch(14% 0.035 255);
+    --bg-2: oklch(19% 0.04 255);
+    --bg-3: oklch(23.5% 0.045 255);
+    --fg: oklch(98% 0.004 95);
+    --muted: oklch(78% 0.035 245);
+    --muted-2: oklch(60% 0.035 250);
+    --border: oklch(36% 0.05 255);
+    --primary: oklch(67% 0.19 245);
+    --primary-fg: oklch(99% 0.004 95);
+    --primary-deep: oklch(50% 0.17 248);
+    --accent: oklch(72% 0.16 220);
+    --available: oklch(76% 0.16 152);
+    --available-bg: oklch(76% 0.16 152 / 12%);
+    --danger: oklch(70% 0.19 25);
+    --danger-bg: oklch(70% 0.19 25 / 12%);
+    --font-body: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+    --font-head: "Space Grotesk", "DM Sans", sans-serif;
+  }
+  *,*::before,*::after{ box-sizing:border-box; }
+  body{ margin:0; background:var(--bg); color:var(--fg); font-family:var(--font-body); font-size:15px; line-height:1.6; }
+  h1,h2,h3{ font-family:var(--font-head); font-weight:600; margin:0; letter-spacing:-.01em; }
+  p{ margin:0; }
+  a{ color:inherit; text-decoration:none; }
+  button{ font-family:inherit; }
+  ::selection{ background:var(--primary); color:var(--primary-fg); }
+  .wrap{ max-width:1080px; margin-inline:auto; padding-inline:20px; }
+
+  header{ position:sticky; top:0; z-index:40; background:color-mix(in oklab, var(--bg) 88%, transparent); backdrop-filter:blur(10px); border-bottom:1px solid var(--border); }
+  .nav{ display:flex; align-items:center; justify-content:space-between; gap:16px; padding-block:14px; }
+  .nav-right{ display:flex; align-items:center; gap:20px; }
+  .brand{ display:flex; align-items:center; gap:10px; }
+  .brand .chip{ background:#fff; border-radius:8px; padding:6px 10px; display:inline-flex; align-items:center; }
+  .brand .logo-img{ display:block; height:30px; width:auto; max-width:170px; object-fit:contain; }
+  .back{ color:var(--muted); font-size:14px; }
+  .back:hover{ color:var(--fg); }
+  .cart-link{ position:relative; display:inline-flex; align-items:center; color:var(--muted); }
+  .cart-link:hover{ color:var(--fg); }
+  .cart-badge{ position:absolute; top:-7px; right:-9px; min-width:16px; height:16px; border-radius:999px; background:var(--primary); color:var(--primary-fg); font-size:10px; font-weight:700; line-height:16px; text-align:center; padding:0 3px; }
+
+  main{ padding-block:48px 80px; }
+  .eyebrow{ font-family:var(--font-head); font-size:11.5px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); margin-bottom:12px; }
+  h1{ font-size:clamp(1.7rem,4vw,2.3rem); line-height:1.08; }
+  .lede{ margin-top:10px; max-width:56ch; color:var(--muted); font-size:15px; }
+
+  .card{ background:var(--bg-2); border:1px solid var(--border); border-radius:18px; padding:clamp(16px,3vw,28px); margin-top:24px; }
+  .card h2{ font-size:1.15rem; }
+
+  .checkout-layout{ display:grid; grid-template-columns:1fr 360px; gap:24px; align-items:start; }
+  #summaryCard{ position:sticky; top:20px; }
+  @media (max-width:860px){
+    .checkout-layout{ grid-template-columns:1fr; }
+    #summaryCard{ position:static; order:-1; }
+  }
+
+  .summary-list{ list-style:none; margin:18px 0 0; padding:0; display:flex; flex-direction:column; gap:8px; }
+  .summary-list li{ display:flex; align-items:center; justify-content:space-between; gap:12px; font-size:14px; color:var(--muted); padding:2px 0; }
+  .summary-list li span:last-child{ color:var(--fg); font-variant-numeric:tabular-nums; flex:none; }
+  .summary-list li .sl-main{ display:flex; align-items:center; gap:10px; min-width:0; flex:1; }
+  .summary-list li .sl-name{ overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .summary-list li .sl-remove{ appearance:none; background:transparent; border:1px solid var(--danger); color:var(--danger); cursor:pointer; width:20px; height:20px; border-radius:6px; flex:none; font-size:14px; line-height:1; display:inline-flex; align-items:center; justify-content:center; }
+  .summary-list li .sl-remove:hover{ color:var(--primary-fg); background:var(--danger); }
+  .addon-toggles{ margin-top:16px; padding-top:14px; border-top:1px solid var(--border); display:flex; flex-direction:column; gap:10px; }
+  .addon-row{ display:flex; align-items:center; gap:8px; font-size:13.5px; color:var(--fg); cursor:pointer; }
+  .addon-row input{ flex:none; width:15px; height:15px; accent-color:var(--primary); }
+  .addon-name{ font-weight:600; }
+  .addon-price{ margin-left:auto; font-variant-numeric:tabular-nums; color:var(--muted); flex:none; padding-left:10px; }
+
+  .info-dot{
+    appearance:none; flex:none; width:15px; height:15px; border-radius:50%;
+    border:1px solid var(--muted-2); background:transparent; color:var(--muted-2);
+    font-size:10px; line-height:1; display:inline-flex; align-items:center; justify-content:center;
+    cursor:default; padding:0; position:relative;
+  }
+  .info-dot:hover, .info-dot:focus-visible{ border-color:var(--accent); color:var(--accent); outline:none; }
+  .info-dot .tip{
+    display:none; position:absolute; left:0; bottom:calc(100% + 8px);
+    width:200px; background:var(--bg-3); border:1px solid var(--border); border-radius:8px;
+    padding:9px 11px; font-size:12px; line-height:1.5; color:var(--muted); text-align:left;
+    font-weight:400; z-index:5; box-shadow:0 8px 20px rgba(0,0,0,.35);
+  }
+  .info-dot:hover .tip, .info-dot:focus-visible .tip{ display:block; }
+  .summary-total{ display:flex; justify-content:space-between; margin-top:14px; padding-top:14px; border-top:1px solid var(--border); font-size:16px; font-weight:700; }
+  .summary-total span:last-child{ font-variant-numeric:tabular-nums; }
+  .edit-link{ display:inline-block; margin-top:14px; font-size:13px; color:var(--accent); }
+  .edit-link:hover{ text-decoration:underline; }
+
+  .form-grid{ display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:20px; }
+  @media (max-width:640px){ .form-grid{ grid-template-columns:1fr; } }
+  .form-grid .span2{ grid-column:1/-1; }
+  label.field{ font-size:13px; color:var(--muted); display:block; }
+  label.field input{ margin-top:6px; width:100%; height:44px; background:var(--bg-3); border:1px solid var(--border); border-radius:9px; padding:0 12px; color:var(--fg); font-family:var(--font-body); font-size:14.5px; outline:0; }
+  label.field input:focus{ border-color:var(--primary); }
+  #card-container{ margin-top:8px; background:var(--bg-3); border:1px solid var(--border); border-radius:9px; padding:12px; min-height:56px; }
+  .pay-row{ margin-top:20px; display:flex; align-items:center; gap:14px; flex-wrap:wrap; }
+  .btn{ appearance:none; border:1px solid transparent; cursor:pointer; font-weight:600; font-size:14px; border-radius:9px; padding:10px 18px; display:inline-flex; align-items:center; gap:8px; line-height:1; }
+  .btn-primary{ background:var(--primary); color:var(--primary-fg); }
+  .btn-primary:hover{ background:var(--primary-deep); }
+  .btn-primary:disabled{ opacity:.5; cursor:not-allowed; }
+  .pay-total{ font-family:var(--font-head); font-size:20px; font-weight:700; }
+  .test-badge{ display:inline-flex; align-items:center; gap:6px; font-size:11px; font-weight:600; color:var(--accent); background:oklch(72% 0.16 220 / 12%); border:1px solid oklch(72% 0.16 220 / 30%); border-radius:999px; padding:4px 10px; margin-bottom:16px; }
+  #payError{ margin-top:12px; font-size:13.5px; color:var(--danger); }
+  #payError:empty{ display:none; }
+
+  .success-panel{ text-align:center; padding-block:20px; }
+  .success-panel .ok-mark{ width:56px; height:56px; border-radius:50%; background:var(--available-bg); color:var(--available); display:flex; align-items:center; justify-content:center; margin:0 auto 18px; }
+  .success-panel h2{ font-size:1.5rem; }
+  .success-panel p{ margin-top:10px; color:var(--muted); max-width:44ch; margin-inline:auto; }
+  .receipt{ margin:24px auto 0; max-width:360px; text-align:left; background:var(--bg-3); border:1px solid var(--border); border-radius:12px; padding:16px; }
+  .receipt li{ display:flex; justify-content:space-between; font-size:13.5px; color:var(--muted); list-style:none; padding:4px 0; }
+  .receipt li span:last-child{ color:var(--fg); font-variant-numeric:tabular-nums; }
+  .receipt .rtotal{ border-top:1px solid var(--border); margin-top:6px; padding-top:10px; font-weight:700; }
+  .receipt .rtotal span:last-child{ color:var(--fg); }
+
+  .empty-card{ text-align:center; padding-block:36px; }
+  .empty-card p{ color:var(--muted); margin-top:8px; }
+  .empty-card .btn{ margin-top:18px; }
+
+  footer{ border-top:1px solid var(--border); padding-block:28px; }
+  .foot-row{ display:flex; flex-wrap:wrap; gap:12px 24px; justify-content:space-between; color:var(--muted-2); font-size:12.5px; }
+  [hidden]{ display:none !important; }
+  .spinner{ width:16px; height:16px; border-radius:50%; border:2px solid currentColor; border-top-color:transparent; animation:spin .7s linear infinite; }
+  @keyframes spin{ to{ transform:rotate(360deg); } }
+  @media (prefers-reduced-motion: reduce){ .spinner{ animation-duration:1.4s; } }
+</style>
+    <script defer src="https://analytics.goveteranwebworks.com/vww.js" data-website-id="0b951c7f-09f7-4c65-9bec-10a9003c615c"></script>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="/"><span class="chip"><img class="logo-img" src="/brand/veteran-webworks-logo.png" alt="Veteran Webworks" /></span></a>
+    <div class="nav-right">
+      <a class="cart-link" href="/checkout" aria-label="View cart">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        <span class="cart-badge" id="cartBadge" hidden>0</span>
+      </a>
+      <a class="back" href="/domains">&larr; Back to domain search</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <p class="eyebrow">Checkout</p>
+    <h1>Complete your order</h1>
+    <p class="lede">Review your domains, add your details, and pay securely.</p>
+
+    <div class="card empty-card" id="emptyCard" hidden>
+      <h2>Your cart is empty</h2>
+      <p>Head back to search and add a domain before checking out.</p>
+      <a class="btn btn-primary" href="/domains">Search domains</a>
+    </div>
+
+    <div id="orderFlow" hidden>
+      <div class="checkout-layout">
+        <div class="card" id="detailsCard">
+          <span class="test-badge" id="testBadge" hidden>Test mode — sandbox payment, no domain is actually registered</span>
+          <h2>Your details</h2>
+          <div class="form-grid">
+            <label class="field span2">Full name<input id="rName" required /></label>
+            <label class="field">Email<input id="rEmail" type="email" required /></label>
+            <label class="field">Phone<input id="rPhone" type="tel" required /></label>
+            <label class="field span2">Business name <span style="color:var(--muted-2)">(optional)</span><input id="rCompany" /></label>
+            <label class="field span2">Address<input id="rAddress1" required /></label>
+            <label class="field">City<input id="rCity" required /></label>
+            <label class="field">State <span style="color:var(--muted-2)">(2-letter)</span><input id="rState" maxlength="2" required /></label>
+            <label class="field">ZIP<input id="rZip" required /></label>
+          </div>
+
+          <h2 style="margin-top:26px">Payment</h2>
+          <div id="card-container"></div>
+          <p id="payError"></p>
+          <div class="pay-row">
+            <button class="btn btn-primary" id="payBtn" type="button">
+              <span id="payBtnLabel">Pay <span id="payAmount">$0.00</span></span>
+            </button>
+          </div>
+        </div>
+
+        <div class="card" id="summaryCard">
+          <h2>Order summary</h2>
+          <ul class="summary-list" id="summaryList"></ul>
+          <div class="addon-toggles" id="addonToggles"></div>
+          <div class="summary-total"><span>Total / yr</span><span id="summaryTotal">$0.00</span></div>
+          <a class="edit-link" href="/domains">Edit cart</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card success-panel" id="successCard" hidden>
+      <div class="ok-mark">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <h2 id="successTitle">You're all set.</h2>
+      <p id="successBody">A confirmation has been sent to your email.</p>
+      <ul class="receipt" id="receiptList"></ul>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap foot-row">
+    <span>&copy; 2026 Veteran Webworks</span>
+    <a href="/contact">Prefer to talk it through first?</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  var CART_KEY = 'vwDomainCart';
+
+  var cart = [];
+  var addonSel = { privacy:false };
+  var currentAddons = [];
+  var squarePayments = null;
+  var squareCard = null;
+
+  var emptyCard = document.getElementById('emptyCard');
+  var orderFlow = document.getElementById('orderFlow');
+  var addonToggles = document.getElementById('addonToggles');
+  var summaryList = document.getElementById('summaryList');
+  var summaryTotal = document.getElementById('summaryTotal');
+
+  var testBadge = document.getElementById('testBadge');
+  var payBtn = document.getElementById('payBtn');
+  var payAmount = document.getElementById('payAmount');
+  var payError = document.getElementById('payError');
+
+  var detailsCard = document.getElementById('detailsCard');
+  var summaryCard = document.getElementById('summaryCard');
+  var successCard = document.getElementById('successCard');
+  var successTitle = document.getElementById('successTitle');
+  var successBody = document.getElementById('successBody');
+  var receiptList = document.getElementById('receiptList');
+  var cartBadge = document.getElementById('cartBadge');
+
+  function money(n){ return '$' + n.toFixed(2); }
+
+  function loadCart(){
+    try {
+      var raw = sessionStorage.getItem(CART_KEY);
+      if (!raw) return false;
+      var saved = JSON.parse(raw);
+      if (saved && Array.isArray(saved.cart) && saved.cart.length){
+        cart = saved.cart;
+        addonSel = saved.addonSel || addonSel;
+        currentAddons = saved.addons || [];
+        return true;
+      }
+    } catch(e){}
+    return false;
+  }
+
+  function persistCart(){
+    try {
+      if (cart.length){
+        sessionStorage.setItem(CART_KEY, JSON.stringify({ cart:cart, addonSel:addonSel, addons:currentAddons }));
+      } else {
+        sessionStorage.removeItem(CART_KEY);
+      }
+    } catch(e){}
+    updateCartBadge();
+  }
+
+  function clearCart(){
+    try { sessionStorage.removeItem(CART_KEY); } catch(e){}
+    updateCartBadge();
+  }
+
+  function updateCartBadge(){
+    if (!cartBadge) return;
+    if (cart.length > 0){ cartBadge.textContent = String(cart.length); cartBadge.hidden = false; }
+    else { cartBadge.hidden = true; }
+  }
+
+  function removeFromCart(idx){
+    cart.splice(idx, 1);
+    persistCart();
+    if (cart.length === 0){
+      orderFlow.hidden = true;
+      emptyCard.hidden = false;
+      return;
+    }
+    renderSummary();
+  }
+
+  function addonUnitTotal(){
+    var per = 0;
+    if (addonSel.privacy) per += (currentAddons.find(function(a){ return a.key==='privacy'; })||{}).price || 0;
+    return per;
+  }
+
+  function cartTotalValue(){
+    var domainsTotal = cart.reduce(function(s,c){ return s + c.price; }, 0);
+    var addonsTotal = addonUnitTotal() * cart.length;
+    return domainsTotal + addonsTotal;
+  }
+
+  function buildInfoDot(a){
+    var info = document.createElement('span');
+    info.className = 'info-dot';
+    info.tabIndex = 0;
+    info.textContent = '?';
+    info.setAttribute('aria-label', a.name + ' info');
+    var tip = document.createElement('span');
+    tip.className = 'tip';
+    tip.textContent = a.description || '';
+    info.appendChild(tip);
+    return info;
+  }
+
+  function renderAddonToggles(){
+    addonToggles.innerHTML = '';
+    if (!currentAddons.length || !cart.length){ return; }
+    currentAddons.forEach(function(a){
+      var row = document.createElement('label');
+      row.className = 'addon-row';
+      var cb = document.createElement('input');
+      cb.type = 'checkbox';
+      cb.checked = !!addonSel[a.key];
+      cb.addEventListener('change', function(e){
+        addonSel[a.key] = e.target.checked;
+        persistCart();
+        renderSummary();
+      });
+      var name = document.createElement('span');
+      name.className = 'addon-name';
+      name.textContent = a.name;
+      var price = document.createElement('span');
+      price.className = 'addon-price';
+      price.textContent = '+' + money(a.price) + '/domain';
+      row.appendChild(cb);
+      row.appendChild(name);
+      row.appendChild(buildInfoDot(a));
+      row.appendChild(price);
+      addonToggles.appendChild(row);
+    });
+  }
+
+  function renderSummary(){
+    summaryList.innerHTML = '';
+    cart.forEach(function(item, idx){
+      var li = document.createElement('li');
+      var main = document.createElement('span');
+      main.className = 'sl-main';
+      var name = document.createElement('span');
+      name.className = 'sl-name';
+      name.textContent = item.domain;
+      var rm = document.createElement('button');
+      rm.type = 'button';
+      rm.className = 'sl-remove';
+      rm.setAttribute('aria-label', 'Remove ' + item.domain);
+      rm.textContent = '×';
+      rm.addEventListener('click', function(){ removeFromCart(idx); });
+      main.appendChild(rm);
+      main.appendChild(name);
+      var price = document.createElement('span');
+      price.textContent = money(item.price);
+      li.appendChild(main);
+      li.appendChild(price);
+      summaryList.appendChild(li);
+    });
+    renderAddonToggles();
+    var total = cartTotalValue();
+    summaryTotal.textContent = money(total);
+    payAmount.textContent = money(total);
+  }
+
+  async function initSquare(){
+    var cfg = await fetch('/api/domains/config').then(function(r){ return r.json(); });
+    if (!cfg.ok) throw new Error('Payment config unavailable');
+    testBadge.hidden = cfg.squareEnv !== 'sandbox';
+    var sdkUrl = cfg.squareEnv === 'production'
+      ? 'https://web.squarecdn.com/v1/square.js'
+      : 'https://sandbox.web.squarecdn.com/v1/square.js';
+    await new Promise(function(resolve, reject){
+      var s = document.createElement('script');
+      s.src = sdkUrl;
+      s.onload = resolve;
+      s.onerror = function(){ reject(new Error('Could not load Square')); };
+      document.head.appendChild(s);
+    });
+    squarePayments = window.Square.payments(cfg.squareAppId, cfg.squareLocationId);
+    squareCard = await squarePayments.card();
+    await squareCard.attach('#card-container');
+  }
+
+  function field(id){ return document.getElementById(id).value.trim(); }
+
+  function bindPay(){
+    payBtn.addEventListener('click', async function(){
+      payError.textContent = '';
+      var registrant = {
+        name: field('rName'), email: field('rEmail'), phone: field('rPhone'),
+        company: field('rCompany'), address1: field('rAddress1'), city: field('rCity'),
+        state: field('rState').toUpperCase(), zip: field('rZip'), country: 'US'
+      };
+      for (var k of ['name','email','phone','address1','city','state','zip']){
+        if (!registrant[k]){ payError.textContent = 'Please fill in all required fields.'; return; }
+      }
+      if (!squareCard){ payError.textContent = 'Payment form is not ready yet — try again in a moment.'; return; }
+
+      payBtn.disabled = true;
+      var originalLabel = payBtn.innerHTML;
+      payBtn.innerHTML = '<span class="spinner"></span> Processing…';
+
+      try {
+        var tokenResult = await squareCard.tokenize();
+        if (tokenResult.status !== 'OK'){
+          throw new Error((tokenResult.errors && tokenResult.errors[0] && tokenResult.errors[0].message) || 'Card was not accepted.');
+        }
+        var res = await fetch('/api/domains/checkout', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            domains: cart.map(function(c){ return c.domain; }),
+            addons: addonSel,
+            registrant: registrant,
+            nonce: tokenResult.token
+          })
+        });
+        var data = await res.json();
+        if (!data.ok){ throw new Error(data.error || 'Checkout failed.'); }
+
+        var order = data.order;
+        successTitle.textContent = order.mode === 'test' ? 'Test order complete.' : 'Your domain is on its way.';
+        successBody.textContent = order.mode === 'test'
+          ? 'This ran through Square’s sandbox — no real charge, no domain was registered. A test receipt was emailed to ' + registrant.email + '.'
+          : 'A confirmation has been emailed to ' + registrant.email + '.';
+        receiptList.innerHTML = '';
+        order.lineItems.forEach(function(li){
+          var row = document.createElement('li');
+          row.innerHTML = '<span>'+li.label+'</span><span>'+money(li.price)+'</span>';
+          receiptList.appendChild(row);
+        });
+        var totalRow = document.createElement('li');
+        totalRow.className = 'rtotal';
+        totalRow.innerHTML = '<span>Total</span><span>'+money(order.total)+'</span>';
+        receiptList.appendChild(totalRow);
+
+        clearCart();
+        summaryCard.hidden = true;
+        detailsCard.hidden = true;
+        successCard.hidden = false;
+        successCard.scrollIntoView({ behavior:'smooth', block:'start' });
+      } catch (err){
+        payError.textContent = err.message;
+      } finally {
+        payBtn.disabled = false;
+        payBtn.innerHTML = originalLabel;
+      }
+    });
+  }
+
+  var hasCart = loadCart();
+  updateCartBadge();
+  if (!hasCart){
+    emptyCard.hidden = false;
+  } else {
+    orderFlow.hidden = false;
+    renderSummary();
+    bindPay();
+    initSquare().catch(function(err){
+      payError.textContent = 'Payment form failed to load: ' + err.message;
+    });
+  }
+})();
+</script>
+</body>
+</html>

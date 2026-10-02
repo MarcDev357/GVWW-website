@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Book a Call | Veteran Webworks</title>
+  <link rel="icon" href="/favicon.png" type="image/png" />
+<meta name="description" content="Book a 30-minute strategy call with Veteran Webworks — web design, automation, local growth, AI front office, and revenue protection for service businesses." />
+<meta name="theme-color" content="#07152b" />
+<link rel="canonical" href="https://goveteranwebworks.com/book" />
+<meta property="og:title" content="Book a Call | Veteran Webworks" />
+<meta property="og:description" content="Book a 30-minute strategy call with Veteran Webworks." />
+<meta property="og:type" content="website" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#07152b;
+    --bg-2:#0b1f3d;
+    --card:#122642;
+    --fg:#f4f7fb;
+    --muted:#9db2d4;
+    --border:#24406b;
+    --primary:#1585ff;
+    --primary-deep:#0757b8;
+    --font-body:"DM Sans",ui-sans-serif,system-ui,sans-serif;
+    --font-heading:"Space Grotesk","DM Sans",sans-serif;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    min-height:100vh;
+    font-family:var(--font-body);
+    color:var(--fg);
+    background:
+      radial-gradient(circle at 88% 2%, rgba(21,133,255,.12), transparent 32rem),
+      radial-gradient(circle at 8% 45%, rgba(21,133,255,.08), transparent 30rem),
+      linear-gradient(180deg, var(--bg-2), var(--bg) 34rem);
+    background-attachment:fixed;
+  }
+  a{color:inherit}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 1.5rem}
+  header{padding:1.6rem 0}
+  .header-row{display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .brand{display:inline-flex;align-items:center;text-decoration:none}
+  .brand .chip{background:#fff;border-radius:8px;padding:6px 10px;display:inline-flex;align-items:center}
+  .brand .logo-img{display:block;height:30px;width:auto;max-width:170px;object-fit:contain}
+  .cart-link{position:relative;display:inline-flex;align-items:center;color:var(--muted);text-decoration:none}
+  .cart-link:hover{color:var(--fg)}
+  .cart-badge{position:absolute;top:-7px;right:-9px;min-width:16px;height:16px;border-radius:999px;background:var(--primary);color:#fff;font-size:10px;font-weight:700;line-height:16px;text-align:center;padding:0 3px}
+  main{padding:2rem 0 5rem}
+  .eyebrow{font-family:var(--font-heading);text-transform:uppercase;letter-spacing:.16em;font-size:.75rem;color:var(--primary);font-weight:600;margin:0 0 1rem}
+  h1{font-family:var(--font-heading);font-weight:600;font-size:clamp(2.2rem,5vw,3.4rem);line-height:1.04;margin:0 0 1rem;max-width:16ch}
+  .lede{color:var(--muted);font-size:1.05rem;line-height:1.7;max-width:52ch;margin:0 0 .5rem}
+  ul.points{list-style:none;padding:0;margin:1.4rem 0 0;display:flex;flex-wrap:wrap;gap:.5rem .9rem}
+  ul.points li{font-size:.85rem;color:var(--muted);display:flex;align-items:center;gap:.45rem}
+  ul.points li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--primary);flex:none}
+  .cal-shell{
+    margin-top:2.5rem;
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:.5rem;
+    overflow:hidden;
+    box-shadow:0 0 60px rgba(21,133,255,.08);
+  }
+  #cal-inline{width:100%;min-height:480px;overflow:hidden;border-radius:14px}
+  #cal-status{color:var(--muted);font-size:.9rem;text-align:center;padding:2.5rem 2rem}
+  #cal-status a{color:var(--primary);font-weight:600}
+  footer{border-top:1px solid var(--border);padding:1.8rem 0;margin-top:2rem}
+  .foot{display:flex;flex-wrap:wrap;gap:.75rem 1.5rem;justify-content:space-between;align-items:center;color:var(--muted);font-size:.85rem}
+  .foot a{text-decoration:none}
+  .foot a:hover{color:var(--fg)}
+  .back{display:inline-flex;align-items:center;gap:.4rem;color:var(--muted);text-decoration:none;font-size:.9rem;margin-bottom:1.5rem}
+  .back:hover{color:var(--fg)}
+</style>
+    <script defer src="https://analytics.goveteranwebworks.com/vww.js" data-website-id="0b951c7f-09f7-4c65-9bec-10a9003c615c"></script>
+</head>
+<body>
+<header>
+  <div class="wrap header-row">
+    <a class="brand" href="/"><span class="chip"><img class="logo-img" src="/brand/veteran-webworks-logo.png" alt="Veteran Webworks" /></span></a>
+    <a class="cart-link" href="/checkout" aria-label="View cart">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+      <span class="cart-badge" id="cartBadge" hidden>0</span>
+    </a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <a class="back" href="/">&larr; Back to site</a>
+    <p class="eyebrow">Book a strategy call</p>
+    <h1>Let&rsquo;s find your clearest next step.</h1>
+    <p class="lede">
+      A focused 30&#8209;minute call over Google Meet. Bring what feels stuck &mdash;
+      the website, follow&#8209;up, local visibility, missed calls &mdash; and leave with a
+      plain&#8209;English read on what to do first. No pressure, no obligation.
+    </p>
+    <ul class="points">
+      <li>30 minutes</li>
+      <li>Google Meet video</li>
+      <li>Free</li>
+      <li>Veteran&#8209;owned</li>
+    </ul>
+
+    <div class="cal-shell">
+      <div id="cal-status">Loading the scheduler&hellip;</div>
+      <div id="cal-inline"></div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>&copy; 2026 Veteran Webworks</span>
+    <span>
+      <a href="/">Home</a>&nbsp;&nbsp;&middot;&nbsp;&nbsp;
+      <a href="/contact">Prefer to send a message?</a>
+    </span>
+  </div>
+</footer>
+
+<script>
+(function (C, A, L) {
+  var p = function (a, ar) { a.q.push(ar); };
+  var d = C.document;
+  C.Cal = C.Cal || function () {
+    var cal = C.Cal, ar = arguments;
+    if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; }
+    if (ar[0] === L) {
+      var api = function () { p(api, arguments); };
+      var namespace = ar[1];
+      api.q = api.q || [];
+      if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); }
+      else p(cal, ar);
+      return;
+    }
+    p(cal, ar);
+  };
+})(window, "https://app.cal.com/embed/embed.js", "init");
+
+Cal("init", "30min", { origin: "https://cal.com" });
+
+Cal.ns["30min"]("inline", {
+  elementOrSelector: "#cal-inline",
+  config: { layout: "month_view", theme: "dark" },
+  calLink: "marcus-wiggs-6wi7au/30min"
+});
+
+Cal.ns["30min"]("ui", {
+  theme: "dark",
+  hideEventTypeDetails: false,
+  layout: "month_view",
+  cssVarsPerTheme: {
+    dark: {
+      "cal-brand": "#1585ff",
+      "cal-bg": "#122642",
+      "cal-bg-emphasis": "#0b1f3d",
+      "cal-border": "#24406b",
+      "cal-text": "#f4f7fb",
+      "cal-text-emphasis": "#ffffff",
+      "cal-text-muted": "#9db2d4"
+    }
+  }
+});
+
+// Swap the status line out once the embed iframe mounts; show a
+// direct link if it never does.
+(function () {
+  var status = document.getElementById("cal-status");
+  var host = document.getElementById("cal-inline");
+  var done = false;
+  function ready() {
+    if (done) return;
+    done = true;
+    if (status) status.remove();
+  }
+  try {
+    Cal.ns["30min"]("on", { action: "linkReady", callback: ready });
+  } catch (e) {}
+  var iv = setInterval(function () {
+    if (host && host.querySelector("iframe")) { ready(); clearInterval(iv); }
+  }, 400);
+  setTimeout(function () {
+    clearInterval(iv);
+    if (!done && status) {
+      status.innerHTML =
+        'If the scheduler doesn’t load, <a href="https://cal.com/marcus-wiggs-6wi7au/30min" target="_blank" rel="noopener">book on this page</a>.';
+    }
+  }, 9000);
+})();
+</script>
+<script>
+(function(){
+  try {
+    var raw = sessionStorage.getItem('vwDomainCart');
+    var count = 0;
+    if (raw) {
+      var saved = JSON.parse(raw);
+      if (saved && Array.isArray(saved.cart)) count = saved.cart.length;
+    }
+    var badge = document.getElementById('cartBadge');
+    if (badge){
+      if (count > 0){ badge.textContent = String(count); badge.hidden = false; }
+      else { badge.hidden = true; }
+    }
+  } catch(e){}
+})();
+</script>
+</body>
+</html>

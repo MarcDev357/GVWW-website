@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Domains | Veteran Webworks</title>
+  <link rel="icon" href="/favicon.png" type="image/png" />
+<meta name="description" content="Search, price, and register your domain — powered by Veteran Webworks." />
+<meta name="theme-color" content="#07152b" />
+<link rel="canonical" href="https://goveteranwebworks.com/domains" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg: oklch(14% 0.035 255);
+    --bg-2: oklch(19% 0.04 255);
+    --bg-3: oklch(23.5% 0.045 255);
+    --fg: oklch(98% 0.004 95);
+    --muted: oklch(78% 0.035 245);
+    --muted-2: oklch(60% 0.035 250);
+    --border: oklch(36% 0.05 255);
+    --primary: oklch(67% 0.19 245);
+    --primary-fg: oklch(99% 0.004 95);
+    --primary-deep: oklch(50% 0.17 248);
+    --accent: oklch(72% 0.16 220);
+    --available: oklch(76% 0.16 152);
+    --available-bg: oklch(76% 0.16 152 / 12%);
+    --taken: oklch(72% 0.13 55);
+    --taken-bg: oklch(72% 0.13 55 / 10%);
+    --danger: oklch(70% 0.19 25);
+    --danger-bg: oklch(70% 0.19 25 / 12%);
+    --font-body: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+    --font-head: "Space Grotesk", "DM Sans", sans-serif;
+  }
+  *,*::before,*::after{ box-sizing:border-box; }
+  body{ margin:0; background:var(--bg); color:var(--fg); font-family:var(--font-body); font-size:15px; line-height:1.6; }
+  h1,h2,h3{ font-family:var(--font-head); font-weight:600; margin:0; letter-spacing:-.01em; }
+  p{ margin:0; }
+  a{ color:inherit; text-decoration:none; }
+  button{ font-family:inherit; }
+  ::selection{ background:var(--primary); color:var(--primary-fg); }
+  .wrap{ max-width:1180px; margin-inline:auto; padding-inline:20px; }
+
+  header{ position:sticky; top:0; z-index:40; background:color-mix(in oklab, var(--bg) 88%, transparent); backdrop-filter:blur(10px); border-bottom:1px solid var(--border); }
+  .nav{ display:flex; align-items:center; justify-content:space-between; gap:16px; padding-block:14px; }
+  .nav-right{ display:flex; align-items:center; gap:20px; }
+  .brand{ display:flex; align-items:center; gap:10px; }
+  .brand .chip{ background:#fff; border-radius:8px; padding:6px 10px; display:inline-flex; align-items:center; }
+  .brand .logo-img{ display:block; height:30px; width:auto; max-width:170px; object-fit:contain; }
+  .back{ color:var(--muted); font-size:14px; }
+  .back:hover{ color:var(--fg); }
+  .cart-link{ position:relative; display:inline-flex; align-items:center; color:var(--muted); }
+  .cart-link:hover{ color:var(--fg); }
+  .cart-badge{ position:absolute; top:-7px; right:-9px; min-width:16px; height:16px; border-radius:999px; background:var(--primary); color:var(--primary-fg); font-size:10px; font-weight:700; line-height:16px; text-align:center; padding:0 3px; }
+
+  main{ padding-block:48px 80px; }
+  .eyebrow{ font-family:var(--font-head); font-size:11.5px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); margin-bottom:12px; }
+  h1{ font-size:clamp(1.9rem,4vw,2.7rem); line-height:1.08; max-width:20ch; }
+  .lede{ margin-top:14px; max-width:56ch; color:var(--muted); font-size:15.5px; }
+
+  .card{ background:var(--bg-2); border:1px solid var(--border); border-radius:18px; padding:clamp(16px,3vw,28px); }
+  .search-row{ display:flex; gap:10px; flex-wrap:wrap; margin-top:28px; }
+  .search-field{ flex:1 1 280px; display:flex; align-items:center; gap:10px; background:var(--bg-3); border:1px solid var(--border); border-radius:11px; padding:0 6px 0 16px; height:52px; }
+  .search-field svg{ flex:none; opacity:.6; }
+  .search-field input{ flex:1; min-width:0; background:transparent; border:0; outline:0; color:var(--fg); font-family:var(--font-body); font-size:16px; height:100%; }
+  .search-field input::placeholder{ color:var(--muted-2); }
+  .btn{ appearance:none; border:1px solid transparent; cursor:pointer; font-weight:600; font-size:14px; border-radius:9px; padding:10px 18px; display:inline-flex; align-items:center; gap:8px; line-height:1; }
+  .btn-primary{ background:var(--primary); color:var(--primary-fg); }
+  .btn-primary:hover{ background:var(--primary-deep); }
+  .btn-primary:disabled{ opacity:.5; cursor:not-allowed; }
+  .btn-outline{ background:transparent; border-color:var(--border); color:var(--fg); }
+  .btn-outline:hover:not(:disabled){ border-color:var(--primary); }
+  .btn-outline:disabled{ opacity:.45; cursor:not-allowed; }
+  .btn-block{ width:100%; justify-content:center; }
+  #searchBtn{ height:52px; flex:none; }
+
+  .bundle-promo{ margin-top:20px; padding:14px 16px; border-radius:12px; background:var(--available-bg); border:1px solid color-mix(in oklab, var(--available) 40%, var(--border)); color:var(--fg); font-size:13.5px; }
+  .bundle-head{ display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; }
+  .bundle-head strong{ color:var(--available); font-size:14.5px; }
+  .bundle-count{ color:var(--muted); font-size:12px; }
+  .bundle-domains{ margin-top:6px; color:var(--muted); font-size:12.5px; }
+  .bundle-price-row{ margin-top:10px; display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+  .bundle-regular{ color:var(--muted-2); text-decoration:line-through; font-variant-numeric:tabular-nums; }
+  .bundle-arrow{ color:var(--muted-2); }
+  .bundle-final{ font-weight:700; font-size:15px; font-variant-numeric:tabular-nums; }
+  .bundle-savings{ margin-left:auto; font-size:12px; font-weight:600; color:var(--available); background:color-mix(in oklab, var(--available) 18%, transparent); border-radius:999px; padding:3px 10px; }
+  .results-grid{ display:grid; gap:10px; margin-top:20px; }
+  .result-row{ display:flex; align-items:center; gap:14px; flex-wrap:wrap; background:var(--bg-3); border:1px solid var(--border); border-radius:12px; padding:14px 16px; }
+  .result-row .domain{ font-family:var(--font-head); font-weight:600; font-size:16px; flex:1 1 200px; }
+  .status{ display:inline-flex; align-items:center; gap:6px; font-size:12.5px; font-weight:600; border-radius:999px; padding:5px 10px; flex:none; }
+  .status.available{ color:var(--available); background:var(--available-bg); }
+  .status.taken{ color:var(--taken); background:var(--taken-bg); }
+  .status svg{ width:13px; height:13px; }
+  .price{ font-variant-numeric:tabular-nums; font-weight:700; font-size:15px; flex:none; min-width:70px; text-align:right; }
+  .result-row .btn{ flex:none; padding:8px 14px; font-size:13px; }
+  .hint{ margin-top:10px; font-size:12.5px; color:var(--muted-2); }
+  .state-msg{ margin-top:20px; font-size:14px; color:var(--muted); }
+  .state-msg.err{ color:var(--danger); }
+
+  .layout{ display:grid; grid-template-columns:1fr 320px; gap:28px; align-items:start; margin-top:36px; }
+  @media (max-width:980px){ .layout{ grid-template-columns:1fr; } }
+
+  .cart{ position:sticky; top:90px; background:var(--bg-2); border:1px solid var(--border); border-radius:16px; padding:20px; }
+  .cart h3{ font-size:14px; }
+  .cart-empty{ margin-top:14px; font-size:13.5px; color:var(--muted-2); }
+  .cart-list{ list-style:none; margin:14px 0 0; padding:0; display:flex; flex-direction:column; gap:10px; }
+  .cart-item{ display:flex; align-items:center; gap:10px; font-size:13.5px; }
+  .cart-item .nm{ flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-weight:600; }
+  .cart-item .pr{ font-variant-numeric:tabular-nums; color:var(--muted); }
+  .cart-item button{ appearance:none; background:transparent; border:0; color:var(--muted-2); cursor:pointer; width:20px; height:20px; border-radius:6px; flex:none; font-size:15px; line-height:1; }
+  .cart-item button:hover{ color:var(--taken); background:var(--taken-bg); }
+
+  .addon-toggles{ margin-top:16px; padding-top:14px; border-top:1px solid var(--border); display:flex; flex-direction:column; gap:10px; }
+  .addon-toggles label{ display:flex; align-items:flex-start; gap:9px; font-size:13px; color:var(--muted); cursor:pointer; }
+  .addon-toggles input{ margin-top:3px; }
+  .addon-toggles .an{ color:var(--fg); font-weight:600; }
+  .addon-toggles .ap{ float:right; font-variant-numeric:tabular-nums; color:var(--fg); }
+
+  .cart-total{ display:flex; justify-content:space-between; margin-top:16px; padding-top:14px; border-top:1px solid var(--border); font-size:14.5px; font-weight:700; }
+  .cart-total span:last-child{ font-variant-numeric:tabular-nums; }
+  .cart-cta{ margin-top:14px; }
+
+  footer{ border-top:1px solid var(--border); padding-block:28px; }
+  .foot-row{ display:flex; flex-wrap:wrap; gap:12px 24px; justify-content:space-between; color:var(--muted-2); font-size:12.5px; }
+  [hidden]{ display:none !important; }
+  .spinner{ width:16px; height:16px; border-radius:50%; border:2px solid currentColor; border-top-color:transparent; animation:spin .7s linear infinite; }
+  @keyframes spin{ to{ transform:rotate(360deg); } }
+  @media (prefers-reduced-motion: reduce){ .spinner{ animation-duration:1.4s; } }
+</style>
+    <script defer src="https://analytics.goveteranwebworks.com/vww.js" data-website-id="0b951c7f-09f7-4c65-9bec-10a9003c615c"></script>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="/"><span class="chip"><img class="logo-img" src="/brand/veteran-webworks-logo.png" alt="Veteran Webworks" /></span></a>
+    <div class="nav-right">
+      <a class="cart-link" href="/checkout" aria-label="View cart">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        <span class="cart-badge" id="cartBadge" hidden>0</span>
+      </a>
+      <a class="back" href="/">&larr; Back to site</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <p class="eyebrow">Domain Registration</p>
+    <h1>Find your name. Make it yours.</h1>
+    <p class="lede">Search availability across two dozen extensions, add privacy or faster DNS if you want it, and check out securely — all in one place.</p>
+
+    <div class="card" id="searchCard">
+      <div class="search-row">
+        <label class="search-field" for="domainQuery">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+          <input id="domainQuery" type="text" autocomplete="off" spellcheck="false" placeholder="yourbusinessname" />
+        </label>
+        <button class="btn btn-primary" id="searchBtn" type="button">Check availability</button>
+      </div>
+      <p class="hint">Enter just the name — we'll check it across all our supported extensions.</p>
+      <div id="searchState" class="state-msg" hidden></div>
+
+      <div class="layout" id="resultsLayout" hidden>
+        <div>
+          <div class="bundle-promo" id="bundlePromo" hidden></div>
+          <div class="results-grid" id="results"></div>
+        </div>
+        <aside class="cart" aria-label="Domain cart">
+          <h3>Your domains</h3>
+          <p class="cart-empty" id="cartEmpty">Nothing added yet.</p>
+          <ul class="cart-list" id="cartList" hidden></ul>
+
+          <div class="addon-toggles" id="addonToggles" hidden></div>
+
+          <div class="cart-total" id="cartTotal" hidden><span>Total / yr</span><span id="cartTotalVal">$0.00</span></div>
+          <div class="cart-cta"><button class="btn btn-primary btn-block" id="checkoutBtn" disabled>Continue to checkout</button></div>
+        </aside>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap foot-row">
+    <span>&copy; 2026 Veteran Webworks</span>
+    <a href="/contact">Prefer to talk it through first?</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  var CART_KEY = 'vwDomainCart';
+
+  var cart = [];        // { domain, price }
+  var addonSel = { privacy:false };
+  var currentAddons = [];
+
+  var qInput = document.getElementById('domainQuery');
+  var searchBtn = document.getElementById('searchBtn');
+  var searchState = document.getElementById('searchState');
+  var resultsLayout = document.getElementById('resultsLayout');
+  var resultsEl = document.getElementById('results');
+  var bundlePromo = document.getElementById('bundlePromo');
+
+  var cartEmpty = document.getElementById('cartEmpty');
+  var cartList = document.getElementById('cartList');
+  var addonToggles = document.getElementById('addonToggles');
+  var cartTotal = document.getElementById('cartTotal');
+  var cartTotalVal = document.getElementById('cartTotalVal');
+  var checkoutBtn = document.getElementById('checkoutBtn');
+  var cartBadge = document.getElementById('cartBadge');
+
+  function updateCartBadge(){
+    if (!cartBadge) return;
+    if (cart.length > 0){ cartBadge.textContent = String(cart.length); cartBadge.hidden = false; }
+    else { cartBadge.hidden = true; }
+  }
+
+  function saveCart(){
+    try {
+      sessionStorage.setItem(CART_KEY, JSON.stringify({ cart:cart, addonSel:addonSel, addons:currentAddons }));
+    } catch(e){}
+    updateCartBadge();
+  }
+
+  function loadCart(){
+    try {
+      var raw = sessionStorage.getItem(CART_KEY);
+      if (!raw) return;
+      var saved = JSON.parse(raw);
+      if (saved && Array.isArray(saved.cart)){
+        cart = saved.cart;
+        addonSel = saved.addonSel || addonSel;
+        currentAddons = saved.addons || [];
+      }
+    } catch(e){}
+  }
+
+  var checkIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+  var xIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>';
+
+  function money(n){ return '$' + n.toFixed(2); }
+
+  function parseQuery(raw){
+    var s = (raw||'').toLowerCase().trim();
+    s = s.replace(/^https?:\/\//,'').replace(/^www\./,'');
+    var dot = s.lastIndexOf('.');
+    if (dot > 0 && dot < s.length - 1){
+      return {
+        base: s.slice(0, dot).replace(/[^a-z0-9-]/g,''),
+        ext: s.slice(dot + 1).replace(/[^a-z0-9-]/g,'') || null
+      };
+    }
+    return { base: s.replace(/[^a-z0-9-]/g,''), ext: null };
+  }
+
+  function addonUnitTotal(){
+    var per = 0;
+    if (addonSel.privacy) per += (currentAddons.find(a=>a.key==='privacy')||{}).price || 0;
+    return per;
+  }
+
+  function cartTotalValue(){
+    var domainsTotal = cart.reduce(function(s,c){ return s + c.price; }, 0);
+    var addonsTotal = addonUnitTotal() * cart.length;
+    return domainsTotal + addonsTotal;
+  }
+
+  function renderCart(){
+    if (cart.length === 0){
+      cartEmpty.hidden = false;
+      cartList.hidden = true;
+      addonToggles.hidden = true;
+      cartTotal.hidden = true;
+      checkoutBtn.disabled = true;
+      cartList.innerHTML = '';
+      return;
+    }
+    cartEmpty.hidden = true;
+    cartList.hidden = false;
+    addonToggles.hidden = false;
+    cartTotal.hidden = false;
+    checkoutBtn.disabled = false;
+
+    cartList.innerHTML = '';
+    cart.forEach(function(item, idx){
+      var li = document.createElement('li');
+      li.className = 'cart-item';
+      li.innerHTML = '<span class="nm">'+item.domain+'</span><span class="pr">'+money(item.price)+'</span>';
+      var rm = document.createElement('button');
+      rm.setAttribute('aria-label','Remove '+item.domain);
+      rm.textContent = '×';
+      rm.addEventListener('click', function(){ cart.splice(idx,1); saveCart(); renderCart(); renderResultsButtons(); });
+      li.appendChild(rm);
+      cartList.appendChild(li);
+    });
+
+    addonToggles.innerHTML = '';
+    currentAddons.forEach(function(a){
+      var id = 'addon_' + a.key;
+      var label = document.createElement('label');
+      label.innerHTML =
+        '<input type="checkbox" id="'+id+'" '+(addonSel[a.key] ? 'checked' : '')+' />' +
+        '<span><span class="an">'+a.name+'</span> <span class="ap">+'+money(a.price)+'/domain</span><br>'+a.description+'</span>';
+      label.querySelector('input').addEventListener('change', function(e){
+        addonSel[a.key] = e.target.checked;
+        saveCart();
+        renderCart();
+      });
+      addonToggles.appendChild(label);
+    });
+
+    cartTotalVal.textContent = money(cartTotalValue());
+  }
+
+  function renderResultsButtons(){
+    resultsEl.querySelectorAll('[data-domain]').forEach(function(btn){
+      var d = btn.getAttribute('data-domain');
+      var inCart = cart.some(function(c){ return c.domain === d; });
+      if (inCart){ btn.textContent = 'Added ✓'; btn.disabled = true; }
+    });
+  }
+
+  var POPULARITY_ORDER = ['com','net','org','io','co','us','app','dev','info','biz','online','store','shop','site','club','me','xyz','cloud','live','ai','ca','uk','au','name'];
+
+  function renderBundlePromo(results){
+    if (!bundlePromo) return;
+    var available = results.filter(function(r){ return r.available; });
+    if (available.length < 2){ bundlePromo.hidden = true; bundlePromo.innerHTML = ''; return; }
+
+    var pct = 15;
+    var bundleSize = Math.min(available.length, 3);
+
+    var ranked = available.slice().sort(function(a, b){
+      var ia = POPULARITY_ORDER.indexOf(a.tld); if (ia === -1) ia = POPULARITY_ORDER.length;
+      var ib = POPULARITY_ORDER.indexOf(b.tld); if (ib === -1) ib = POPULARITY_ORDER.length;
+      return ia - ib;
+    });
+    var bundle = ranked.slice(0, bundleSize);
+
+    var subtotal = bundle.reduce(function(s, r){ return s + r.price; }, 0);
+    var discount = subtotal * (pct / 100);
+    var bundleTotal = subtotal - discount;
+
+    var base = bundle[0].domain.slice(0, bundle[0].domain.length - bundle[0].tld.length - 1);
+    var extLabel = base + '.' + bundle[0].tld;
+    if (bundle.length > 1){
+      extLabel += ', .' + bundle.slice(1).map(function(r){ return r.tld; }).join(', .');
+    }
+
+    bundlePromo.hidden = false;
+    bundlePromo.innerHTML =
+      '<div class="bundle-head"><strong>Bundle &amp; save ' + pct + '%</strong><span class="bundle-count">' + bundle.length + ' extensions, picked for you</span></div>' +
+      '<div class="bundle-domains">' + extLabel + '</div>' +
+      '<div class="bundle-price-row">' +
+        '<span class="bundle-regular">' + money(subtotal) + '</span>' +
+        '<span class="bundle-arrow">&rarr;</span>' +
+        '<span class="bundle-final">' + money(bundleTotal) + '</span>' +
+        '<span class="bundle-savings">Save ' + money(discount) + '</span>' +
+      '</div>';
+  }
+
+  function runSearch(){
+    var parsed = parseQuery(qInput.value);
+    var name = parsed.base;
+    var requestedExt = parsed.ext;
+    if (!name){ searchState.hidden = false; searchState.className = 'state-msg err'; searchState.textContent = 'Enter a name to search.'; return; }
+
+    searchState.hidden = false;
+    searchState.className = 'state-msg';
+    searchState.innerHTML = '<span class="spinner" style="display:inline-block;vertical-align:-2px;margin-right:8px"></span>Searching…';
+    resultsLayout.hidden = true;
+    searchBtn.disabled = true;
+
+    fetch('/api/domains/search?name=' + encodeURIComponent(name))
+      .then(function(r){ return r.json(); })
+      .then(function(data){
+        searchBtn.disabled = false;
+        if (!data.ok){ searchState.className = 'state-msg err'; searchState.textContent = data.error || 'Search failed.'; return; }
+        searchState.hidden = true;
+        currentAddons = data.addons || [];
+        saveCart();
+        resultsEl.innerHTML = '';
+
+        var results = data.results.slice();
+        if (requestedExt){
+          var matchIdx = results.findIndex(function(r){ return r.tld === requestedExt; });
+          if (matchIdx > 0){
+            var match = results.splice(matchIdx, 1)[0];
+            results.unshift(match);
+          }
+        }
+        renderBundlePromo(results);
+
+        results.forEach(function(r){
+          var row = document.createElement('div');
+          row.className = 'result-row';
+          var already = cart.some(function(c){ return c.domain === r.domain; });
+          row.innerHTML =
+            '<span class="domain">'+r.domain+'</span>' +
+            '<span class="status '+(r.available?'available':'taken')+'">'+(r.available?checkIcon+'Available':xIcon+'Taken')+'</span>' +
+            '<span class="price">'+(r.available ? money(r.price)+'<br><span style="font-weight:400;font-size:11px;color:var(--muted-2)">per year</span>' : '')+'</span>';
+          var btn = document.createElement('button');
+          btn.className = 'btn btn-outline';
+          btn.type = 'button';
+          btn.setAttribute('data-domain', r.domain);
+          if (!r.available){ btn.textContent = 'Unavailable'; btn.disabled = true; }
+          else if (already){ btn.textContent = 'Added ✓'; btn.disabled = true; }
+          else {
+            btn.textContent = 'Add';
+            btn.addEventListener('click', function(){
+              cart.push({ domain:r.domain, price:r.price });
+              saveCart();
+              renderCart();
+              renderResultsButtons();
+            });
+          }
+          row.appendChild(btn);
+          resultsEl.appendChild(row);
+        });
+        resultsLayout.hidden = false;
+      })
+      .catch(function(){
+        searchBtn.disabled = false;
+        searchState.hidden = false;
+        searchState.className = 'state-msg err';
+        searchState.textContent = 'Something went wrong. Try again.';
+      });
+  }
+
+  searchBtn.addEventListener('click', runSearch);
+  qInput.addEventListener('keydown', function(e){ if (e.key === 'Enter') runSearch(); });
+
+  checkoutBtn.addEventListener('click', function(){
+    saveCart();
+    window.location.href = '/checkout';
+  });
+
+  loadCart();
+  renderCart();
+  updateCartBadge();
+  if (cart.length > 0) resultsLayout.hidden = false;
+
+  var presetQuery = new URLSearchParams(window.location.search).get('q');
+  if (presetQuery) {
+    qInput.value = presetQuery;
+    runSearch();
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+name: Deploy to Production
+
+# workflow_dispatch only: runs when a person clicks "Run workflow" on the
+# Actions tab and confirms the branch. No push or schedule trigger of any
+# kind. That click is the production approval gate.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+jobs:
+  build:
+    uses: ./.github/workflows/build.yml
+
+  deploy-production:
+    name: Deploy to goveteranwebworks.com
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: release
+
+      - name: Send release to the restricted deploy user
+        env:
+          DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$DEPLOY_SSH_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          echo "44.223.155.189 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGbh0O9DcPEbz6vaeQwVIzWFoQjuesnhopsAlr+kYpyy" > ~/.ssh/known_hosts
+          ssh -i ~/.ssh/deploy_key -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes \
+            gvwwdeploy@44.223.155.189 production < release.tar.gz

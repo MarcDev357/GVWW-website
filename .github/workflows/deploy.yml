@@ -1,0 +1,40 @@
+name: Deploy to Sandbox
+
+# Every push to main builds, runs the gates, and updates the sandbox only.
+# Production is a separate, manually triggered workflow.
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-sandbox
+  cancel-in-progress: false
+
+jobs:
+  build:
+    uses: ./.github/workflows/build.yml
+
+  deploy-sandbox:
+    name: Deploy to vww-sandbox.goveteranwebworks.com
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: release
+
+      - name: Send release to the restricted deploy user
+        env:
+          DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$DEPLOY_SSH_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          echo "44.223.155.189 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGbh0O9DcPEbz6vaeQwVIzWFoQjuesnhopsAlr+kYpyy" > ~/.ssh/known_hosts
+          # authorized_keys forces every session through dispatch.sh. The word
+          # "sandbox" is a routing label, never executed as a shell command.
+          ssh -i ~/.ssh/deploy_key -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes \
+            gvwwdeploy@44.223.155.189 sandbox < release.tar.gz

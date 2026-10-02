@@ -1,0 +1,62 @@
+name: Build and test
+
+# Reusable: called by deploy.yml (push -> sandbox) and deploy-production.yml
+# (manual -> production). Builds once; the exact tarball that passed the
+# gates is what gets deployed.
+on:
+  workflow_call:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build, gate, package
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+      - run: npm run build
+
+      - name: Backend syntax check
+        run: |
+          node --check server/domain-service/server.js
+          node --check server/mailer/server.js
+
+      # Accessibility (axe), SEO and best-practices gate on the built site.
+      # Fails the job, so nothing deploys, if a11y < 95 or SEO/best-practices < 90.
+      # Performance only warns: runner speed varies too much to gate on it.
+      - name: Lighthouse CI
+        run: npx -y @lhci/cli@0.14 autorun
+
+      - name: Keep Lighthouse reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-reports
+          path: .lighthouseci/
+          if-no-files-found: ignore
+
+      - name: Package release
+        run: |
+          mkdir -p release
+          cp -r dist release/site
+          mkdir -p release/server
+          for s in domain-service mailer; do
+            mkdir -p "release/server/$s"
+            cp "server/$s/server.js" "server/$s/package.json" "server/$s/package-lock.json" "release/server/$s/"
+          done
+          echo "$GITHUB_SHA" > release/COMMIT
+          tar -czf release.tar.gz -C release .
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: release
+          path: release.tar.gz
+          retention-days: 30
