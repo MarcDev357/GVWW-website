@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Check } from "lucide-react";
+import { Check, Globe } from "lucide-react";
 import Layout from "../components/Layout";
 import CtaBanner from "../components/CtaBanner";
 import PageHero from "../components/PageHero";
@@ -13,6 +13,29 @@ export default function Pricing() {
     <Layout>
       <main>
         <PageHero {...PAGE_CONTENT.pricing} />
+        <section className="mx-6 mb-12 sm:mx-10">
+          <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-5 rounded-xl border border-primary/40 bg-primary/10 p-6 sm:p-8">
+            <div className="flex items-start gap-4">
+              <Globe className="mt-1 size-6 shrink-0 text-primary" />
+              <div>
+                <p className="eyebrow text-primary">Limited-time offer</p>
+                <h2 className="display mt-2 text-2xl font-semibold sm:text-3xl">
+                  First-year domain name free with any website build.
+                </h2>
+                <p className="mt-2 max-w-2xl text-sm leading-6 text-muted-foreground">
+                  Search and register your domain with Veteran Webworks, and the first year is on us when you build
+                  your site with us.
+                </p>
+              </div>
+            </div>
+            <a
+              href="/domains"
+              className="inline-flex h-10 items-center rounded-md bg-primary px-5 text-sm font-medium text-primary-foreground"
+            >
+              Search for a domain
+            </a>
+          </div>
+        </section>
         <section className="mx-6 sm:mx-10">
           <div className="mx-auto max-w-7xl space-y-16">
             {CATEGORIES.map((category) => (

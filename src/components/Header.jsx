@@ -3,6 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
 import { NAV } from "../nav";
 import CartIcon from "./CartIcon";
+import PromoBanner from "./PromoBanner";
 import logo from "../assets/veteran-webworks-logo.png";
 
 export default function Header() {
@@ -10,6 +11,7 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-20 border-b border-border bg-background/90 backdrop-blur">
+      <PromoBanner />
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 sm:px-10">
         <Link to="/" aria-label="Veteran Webworks home" className="flex items-center rounded-md bg-white px-2 py-1">
           <img src={logo} alt="Veteran Webworks" className="h-9 w-auto max-w-[13rem] object-contain sm:h-10" />
