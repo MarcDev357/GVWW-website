@@ -60,7 +60,7 @@ export default function Pricing() {
                         className={`mt-8 flex h-10 w-full items-center justify-center rounded-md text-sm font-medium ${
                           pkg.recommended
                             ? "bg-primary text-primary-foreground"
-                            : "border border-border text-foreground"
+                            : "border border-border bg-background text-foreground"
                         }`}
                       >
                         Find my fit

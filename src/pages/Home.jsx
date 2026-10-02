@@ -2,6 +2,7 @@ import { ChevronDown, Check } from "lucide-react";
 import Layout from "../components/Layout";
 import CtaBanner from "../components/CtaBanner";
 import ServiceGrid from "../components/ServiceGrid";
+import HomeDomainSearch from "../components/HomeDomainSearch";
 import { FAQS } from "../data/faqs";
 
 const HOME_FAQS = FAQS.slice(0, 5);
@@ -38,7 +39,7 @@ export default function Home() {
                 </a>
                 <a
                   href="/pricing"
-                  className="inline-flex h-11 items-center rounded-md border border-border px-6 text-sm font-medium transition-colors hover:bg-card"
+                  className="inline-flex h-11 items-center rounded-md border border-border bg-background px-6 text-sm font-medium transition-colors hover:bg-card"
                 >
                   See starting prices
                 </a>
@@ -46,6 +47,7 @@ export default function Home() {
               <p className="mt-8 text-xs uppercase tracking-[.14em] text-muted-foreground">
                 Veteran-owned &middot; plain-English guidance &middot; clear scope
               </p>
+              <HomeDomainSearch />
             </div>
             <div className="relative hidden min-h-[430px] lg:block">
               <div className="absolute inset-8 rotate-3 rounded-2xl bg-primary/20" />

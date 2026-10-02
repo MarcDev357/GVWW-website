@@ -80,7 +80,7 @@ export default function Fit() {
                 </a>
                 <Link
                   to={`/services/${result.slug}`}
-                  className="inline-flex h-10 items-center rounded-md border border-border px-5 text-sm font-medium"
+                  className="inline-flex h-10 items-center rounded-md border border-border bg-background px-5 text-sm font-medium"
                 >
                   Explore this service
                 </Link>

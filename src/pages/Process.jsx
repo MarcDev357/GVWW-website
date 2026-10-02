@@ -37,7 +37,7 @@ export default function Process() {
                 </Link>
                 <Link
                   to="/services"
-                  className="inline-flex h-10 items-center rounded-md border border-border px-5 text-sm font-medium"
+                  className="inline-flex h-10 items-center rounded-md border border-border bg-background px-5 text-sm font-medium"
                 >
                   See the service ladder
                 </Link>

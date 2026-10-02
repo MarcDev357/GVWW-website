@@ -50,6 +50,7 @@ a {
 }
 
 .grid-line {
+  background-color: #294b78;
   background-image: linear-gradient(
     to right,
     color-mix(in oklch, var(--color-primary) 13%, transparent) 1px,

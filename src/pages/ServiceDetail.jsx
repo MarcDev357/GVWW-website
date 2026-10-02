@@ -28,7 +28,7 @@ export default function ServiceDetail({ slug }) {
                 </Link>
                 <Link
                   to="/contact"
-                  className="inline-flex h-10 items-center rounded-md border border-border px-5 text-sm font-medium"
+                  className="inline-flex h-10 items-center rounded-md border border-border bg-background px-5 text-sm font-medium"
                 >
                   Contact Veteran Webworks
                 </Link>
