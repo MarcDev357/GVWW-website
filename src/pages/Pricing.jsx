@@ -56,7 +56,7 @@ export default function Pricing() {
                         ))}
                       </ul>
                       <Link
-                        to="/contact"
+                        to="/fit"
                         className={`mt-8 flex h-10 w-full items-center justify-center rounded-md text-sm font-medium ${
                           pkg.recommended
                             ? "bg-primary text-primary-foreground"

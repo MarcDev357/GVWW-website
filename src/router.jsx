@@ -9,6 +9,7 @@ import Pricing from "./pages/Pricing";
 import Process from "./pages/Process";
 import Faq from "./pages/Faq";
 import About from "./pages/About";
+import Fit from "./pages/Fit";
 import NotFound from "./pages/NotFound";
 
 const rootRoute = createRootRoute({
@@ -37,6 +38,7 @@ const pricingRoute = createRoute({ getParentRoute: () => rootRoute, path: "/pric
 const processRoute = createRoute({ getParentRoute: () => rootRoute, path: "/process", component: Process });
 const faqRoute = createRoute({ getParentRoute: () => rootRoute, path: "/faq", component: Faq });
 const aboutRoute = createRoute({ getParentRoute: () => rootRoute, path: "/about", component: About });
+const fitRoute = createRoute({ getParentRoute: () => rootRoute, path: "/fit", component: Fit });
 
 const routeTree = rootRoute.addChildren([
   homeRoute,
@@ -48,6 +50,7 @@ const routeTree = rootRoute.addChildren([
   processRoute,
   faqRoute,
   aboutRoute,
+  fitRoute,
 ]);
 
 export const router = createRouter({ routeTree, defaultNotFoundComponent: NotFound });
