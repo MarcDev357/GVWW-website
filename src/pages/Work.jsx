@@ -1,6 +1,8 @@
 import Layout from "../components/Layout";
 import CtaBanner from "../components/CtaBanner";
+import PageHero from "../components/PageHero";
 import { WORK_ITEMS } from "../data/work";
+import { PAGE_CONTENT } from "../data/pageContent";
 
 function WorkCard({ item }) {
   const body = (
@@ -83,13 +85,7 @@ export default function Work() {
   return (
     <Layout>
       <main>
-        <div className="mx-auto max-w-7xl px-6 pb-14 pt-20 sm:px-10 sm:pt-28">
-          <p className="eyebrow text-primary">Veteran Webworks</p>
-          <h1 className="display mt-5 max-w-5xl text-5xl font-semibold leading-[.94] sm:text-7xl">Our work.</h1>
-          <p className="mt-7 max-w-2xl text-lg leading-8 text-muted-foreground">
-            A growing portfolio of approved, verifiable work. No invented results or borrowed logos.
-          </p>
-        </div>
+        <PageHero {...PAGE_CONTENT.work} />
         <section className="mx-6 sm:mx-10">
           <div className="mx-auto grid max-w-7xl gap-5 md:grid-cols-2">
             {WORK_ITEMS.map((item) => (

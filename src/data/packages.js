@@ -1,0 +1,26 @@
+// Real content, extracted from the live site's database before moving off
+// the third-party Vincen/Neon-hosted backend to static source.
+export const PACKAGES = [
+  { category: "Web Design & Development", name: "Starter Website", price: "$1,200 one-time", summary: "The accessible, professional foundation for a new or small organization.", features: ["Up to 5 pages", "Responsive design and mobile optimization", "Contact form, SSL, basic SEO, analytics", "Basic Google Business integration"], recommended: true, setup: null },
+  { category: "Web Design & Development", name: "Business Website", price: "$2,500+", summary: "A stronger conversion path for an established local business.", features: ["Up to 10 pages", "Conversion-focused design", "Advanced forms and Google Business integration", "CRM integration optional"], recommended: false, setup: null },
+  { category: "Web Design & Development", name: "Growth Website", price: "$4,500+", summary: "A larger lead-generation foundation with room to grow.", features: ["Up to 15 pages", "Lead tracking and automation integration", "Advanced local SEO setup", "CRM and advanced forms"], recommended: false, setup: null },
+
+  { category: "Website Care", name: "Essential Care", price: "$97/mo", summary: "Host it. Maintain it. Protect it.", features: ["Hosting, SSL, backups", "Security and uptime monitoring", "Software maintenance", "Reasonable basic content changes"], recommended: false, setup: null },
+  { category: "Website Care", name: "Professional Care", price: "$197/mo", summary: "For active business websites that need a faster feedback loop.", features: ["Everything in Essential", "Performance optimization", "Form testing and health checks", "Faster support"], recommended: true, setup: null },
+  { category: "Website Care", name: "Business Critical", price: "$347/mo", summary: "For businesses where downtime means lost money.", features: ["Everything above", "Priority support", "Enhanced recovery", "Emergency-response priority"], recommended: false, setup: null },
+
+  { category: "Web Presence", name: "Local Presence", price: "$99/mo", summary: "Keep your core business presence accurate and current.", features: ["Profile maintenance", "Core information updates", "Basic content support"], recommended: false, setup: null },
+  { category: "Web Presence", name: "Local Growth", price: "$197/mo", summary: "Add active visibility and reputation support.", features: ["GBP management and posts", "Review monitoring and response", "Review-generation system", "Local optimization"], recommended: true, setup: null },
+  { category: "Web Presence", name: "Local Authority", price: "$397/mo", summary: "A deeper local presence and reputation program.", features: ["Everything in Local Growth", "Citations and local SEO", "Competitive visibility monitoring", "Website local optimization"], recommended: false, setup: null },
+
+  { category: "Lead Growth", name: "Lead Connect", price: "$197/mo", summary: "Connect your lead sources to a simple pipeline.", features: ["CRM and forms", "Lead notifications", "Pipeline and booking", "Basic follow-up"], recommended: false, setup: null },
+  { category: "Lead Growth", name: "Lead Automation", price: "$397/mo", summary: "Follow up consistently while you run the business.", features: ["Everything in Lead Connect", "Missed-call text-back", "Automated follow-up and reminders", "Review requests"], recommended: true, setup: null },
+  { category: "Lead Growth", name: "Revenue Automation", price: "$697/mo", summary: "Advanced workflows for nurture and reactivation.", features: ["Advanced workflows", "Segmentation and long-term nurture", "Database reactivation", "Reporting"], recommended: false, setup: null },
+
+  { category: "AI Front Office", name: "AI Website Assistant", price: "$297/mo", summary: "Helpful website chat for FAQs, qualification, and booking handoff.", features: ["Approved knowledge base", "Lead capture and qualification", "Booking handoff", "Human escalation"], recommended: false, setup: "+$300 setup" },
+  { category: "AI Front Office", name: "AI Receptionist", price: "$597/mo", summary: "A branded phone experience for after-hours and first response.", features: ["AI phone answering", "Appointment requests", "Call summaries", "CRM integration"], recommended: true, setup: "+$750 setup" },
+  { category: "AI Front Office", name: "AI Front Office", price: "$997/mo", summary: "A connected digital front office across chat, phone, CRM, and follow-up.", features: ["AI phone and chat", "Missed-call recovery", "Booking and reminders", "Automated SMS/email and reviews"], recommended: false, setup: "+$1,500 setup" },
+
+  { category: "Revenue Protection", name: "Revenue Protection", price: "$1,497/mo", summary: "Recover opportunities that used to leak after the first inquiry.", features: ["AI Front Office", "Immediate lead recovery", "Estimate and unsold-lead follow-up", "Reactivation and revenue tracking"], recommended: true, setup: "+$1,500 setup" },
+  { category: "Revenue Protection", name: "Revenue Protection Pro", price: "$2,197+/mo", summary: "Advanced automation for multiple lead sources and longer nurture.", features: ["Multiple lead sources", "Database reactivation", "Custom workflows", "Reporting and priority optimization"], recommended: false, setup: "+$2,500 setup" },
+];

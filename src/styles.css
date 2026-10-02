@@ -125,6 +125,19 @@ a {
   font-size: 0.8rem;
 }
 
+.depth-wrap {
+  perspective: 1000px;
+}
+.depth-card {
+  transition:
+    transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.32s;
+}
+.depth-card:hover,
+.depth-card:focus-within {
+  box-shadow: 0 24px 60px color-mix(in oklch, var(--color-primary) 14%, transparent);
+}
+
 .liquid-glass-strong {
   background-blend-mode: luminosity;
   backdrop-filter: blur(50px);

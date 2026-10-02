@@ -2,7 +2,9 @@ import { ChevronDown, Check } from "lucide-react";
 import Layout from "../components/Layout";
 import CtaBanner from "../components/CtaBanner";
 import ServiceGrid from "../components/ServiceGrid";
-import { HOME_FAQS } from "../data/faqs";
+import { FAQS } from "../data/faqs";
+
+const HOME_FAQS = FAQS.slice(0, 5);
 import logo from "../assets/veteran-webworks-logo.png";
 
 const WORKFLOW_STEPS = [
