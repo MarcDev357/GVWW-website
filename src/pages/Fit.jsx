@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowUpRight, ArrowLeft, Check, RotateCcw } from "lucide-react";
 import Layout from "../components/Layout";
@@ -11,16 +11,6 @@ export default function Fit() {
 
   const result = useMemo(() => scoreQuiz(answers), [answers]);
   const question = QUIZ_QUESTIONS[step];
-
-  useEffect(() => {
-    document.title = "Find Your Growth Path | Veteran Webworks";
-    document
-      .querySelector('meta[name="description"]')
-      ?.setAttribute(
-        "content",
-        "Answer six concise questions to find the right website design, website care, local growth, lead automation, AI front office, or revenue protection path.",
-      );
-  }, []);
 
   function pick(value) {
     setAnswers((a) => ({ ...a, [question.key]: value }));

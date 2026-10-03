@@ -13,5 +13,13 @@ Veteran Webworks is a veteran-owned growth partner for local service businesses,
 ## Approach
 Diagnose the customer journey, build the right digital layer, and improve it using real questions and behavior. Veteran Webworks uses plain-English communication and clear scope before production.
 
+## Key pages
+- Services: https://veteranwebworks.com/services
+- Pricing: https://veteranwebworks.com/pricing
+- Process: https://veteranwebworks.com/process
+- FAQ: https://veteranwebworks.com/faq
+- Domain search and registration: https://veteranwebworks.com/domains
+- Book a call: https://veteranwebworks.com/book
+
 ## Contact
 Book a strategy call at https://veteranwebworks.com/contact or email marcus@veteranwebworks.com.

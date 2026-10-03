@@ -1,5 +1,6 @@
 import { createRootRoute, createRoute, createRouter, Outlet } from "@tanstack/react-router";
 import Header from "./components/Header";
+import RouteMeta from "./components/RouteMeta";
 import Home from "./pages/Home";
 import Work from "./pages/Work";
 import Contact from "./pages/Contact";
@@ -15,6 +16,7 @@ import NotFound from "./pages/NotFound";
 const rootRoute = createRootRoute({
   component: () => (
     <div className="min-h-screen bg-background text-foreground">
+      <RouteMeta />
       <Header />
       <Outlet />
     </div>
