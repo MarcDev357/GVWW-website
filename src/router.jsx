@@ -44,6 +44,8 @@ const faqRoute = createRoute({ getParentRoute: () => rootRoute, path: "/faq", co
 const aboutRoute = createRoute({ getParentRoute: () => rootRoute, path: "/about", component: About });
 const fitRoute = createRoute({ getParentRoute: () => rootRoute, path: "/fit", component: Fit });
 const privacyRoute = createRoute({ getParentRoute: () => rootRoute, path: "/privacy", component: Privacy });
+const privacyAliasRoute = createRoute({ getParentRoute: () => rootRoute, path: "/privacy-policy", component: Privacy });
+const termsAliasRoute = createRoute({ getParentRoute: () => rootRoute, path: "/terms-of-service", component: Terms });
 const termsRoute = createRoute({ getParentRoute: () => rootRoute, path: "/terms", component: Terms });
 
 const routeTree = rootRoute.addChildren([
@@ -59,6 +61,8 @@ const routeTree = rootRoute.addChildren([
   fitRoute,
   privacyRoute,
   termsRoute,
+  privacyAliasRoute,
+  termsAliasRoute,
 ]);
 
 export const router = createRouter({ routeTree, defaultNotFoundComponent: NotFound });

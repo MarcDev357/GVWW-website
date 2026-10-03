@@ -10,7 +10,7 @@ export const BUSINESS = {
   phone: "",
   address: "",
   smsProgramName: "Veteran Webworks Text Messages",
-  legalUpdated: "",
+  legalUpdated: "October 3, 2026",
 };
 
 export const SMS_CONSENT_VERSION = "2026-10-03-split-v2";
