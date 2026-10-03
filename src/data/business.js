@@ -4,11 +4,11 @@
 // block a production deploy (scripts/check-business.mjs).
 export const BUSINESS = {
   name: "Veteran Webworks",
-  legalName: "",
+  legalName: "2 DW Properties Inc. DBA Veteran Webworks",
   email: "marcus@veteranwebworks.com",
-  supportEmail: "marcus@veteranwebworks.com",
+  supportEmail: "support@goveteranwebworks.com",
   phone: "",
-  address: "",
+  address: "40335 Winchester Rd, Temecula, CA 92591",
   smsProgramName: "Veteran Webworks Text Messages",
   legalUpdated: "October 3, 2026",
 };
