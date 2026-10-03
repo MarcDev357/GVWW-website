@@ -1,6 +1,8 @@
 import { useState } from "react";
-import { Mail } from "lucide-react";
+import { Link } from "@tanstack/react-router";
+import { Mail, Phone, MapPin } from "lucide-react";
 import Layout from "../components/Layout";
+import { BUSINESS, SMS_CONSENT_TEXT, SMS_CONSENT_VERSION } from "../data/business";
 import { SERVICE_NAMES } from "../data/services";
 import logo from "../assets/veteran-webworks-logo.png";
 
@@ -17,6 +19,12 @@ export default function Contact() {
       setError("Add your name and a valid email so the request can be prepared.");
       return;
     }
+    const smsConsent = form.get("sms_consent") === "on";
+    const phone = String(form.get("phone") ?? "").trim();
+    if (smsConsent && phone.replace(/\D/g, "").length < 10) {
+      setError("Add your mobile number to receive text messages, or uncheck the text message box.");
+      return;
+    }
     setError("");
     setSent(true);
     fetch("/api/contact", {
@@ -26,7 +34,12 @@ export default function Contact() {
         form: "Contact / Strategy Call",
         name,
         email,
-        phone: String(form.get("phone") ?? ""),
+        phone,
+        ...(smsConsent && {
+          sms_consent: true,
+          sms_consent_text: SMS_CONSENT_TEXT,
+          sms_consent_version: SMS_CONSENT_VERSION,
+        }),
         best_time: String(form.get("best_time") ?? ""),
         service: String(form.get("service") ?? ""),
         message: String(form.get("message") ?? ""),
@@ -54,10 +67,25 @@ export default function Contact() {
                 Tell us what is stuck, what is changing, or what you want to make easier. A useful reply comes back
                 during business hours.
               </p>
-              <p className="mt-10 text-sm text-muted-foreground">
-                <Mail className="mr-3 inline size-4 text-primary" />
-                marcus@veteranwebworks.com
-              </p>
+              <address className="mt-10 space-y-3 text-sm not-italic text-muted-foreground">
+                <p className="font-semibold text-foreground">{BUSINESS.legalName || BUSINESS.name}</p>
+                <p>
+                  <Mail className="mr-3 inline size-4 text-primary" />
+                  <a href={`mailto:${BUSINESS.email}`}>{BUSINESS.email}</a>
+                </p>
+                {BUSINESS.phone && (
+                  <p>
+                    <Phone className="mr-3 inline size-4 text-primary" />
+                    <a href={`tel:${BUSINESS.phone.replace(/[^+\d]/g, "")}`}>{BUSINESS.phone}</a>
+                  </p>
+                )}
+                {BUSINESS.address && (
+                  <p>
+                    <MapPin className="mr-3 inline size-4 text-primary" />
+                    {BUSINESS.address}
+                  </p>
+                )}
+              </address>
             </div>
 
             <form onSubmit={handleSubmit} noValidate className="space-y-5 rounded-xl border border-border bg-card p-7 sm:p-10">
@@ -143,6 +171,20 @@ export default function Contact() {
                   className="mt-2 flex w-full rounded-md border border-input bg-background px-3 py-2 text-sm outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 />
               </label>
+
+              <div className="flex items-start gap-3 rounded-lg border border-border bg-background/50 p-4">
+                <input
+                  id="sms_consent"
+                  name="sms_consent"
+                  type="checkbox"
+                  className="mt-1 size-4 shrink-0 accent-[var(--color-primary)]"
+                />
+                <label htmlFor="sms_consent" className="text-xs leading-5 text-muted-foreground">
+                  {SMS_CONSENT_TEXT} See our{" "}
+                  <Link to="/privacy" className="text-primary underline">Privacy Policy</Link> and{" "}
+                  <Link to="/terms" className="text-primary underline">Terms of Service</Link>.
+                </label>
+              </div>
 
               {error && (
                 <p className="text-sm text-destructive" role="alert">
