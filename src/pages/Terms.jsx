@@ -10,14 +10,16 @@ export default function Terms() {
         <p>By agreeing to receive text messages on our contact form, you agree to these program terms.</p>
         <ul className="list-disc space-y-3 pl-6">
           <li>
-            <strong className="text-foreground">Program:</strong> {BUSINESS.smsProgramName}. {BUSINESS.name} sends
-            transactional text messages to people who opt in: replies to inquiries, appointment reminders,
-            scheduling and booking updates, and service follow-ups. We do not send promotional or marketing texts
-            under this program.
+            <strong className="text-foreground">Program:</strong> {BUSINESS.smsProgramName}. {BUSINESS.name} sends two
+            kinds of text messages, each with its own opt-in on our contact form: (1) transactional messages, such as
+            replies to inquiries, appointment and booking confirmations and reminders, scheduling updates, and
+            service follow-ups; and (2) recurring marketing and promotional messages, such as offers, news, and
+            updates about our services. You can opt in to either or both. Marketing messages may be sent using an
+            automated system.
           </li>
           <li>
             <strong className="text-foreground">Consent:</strong> Consent is optional and is not a condition of any
-            purchase.
+            purchase. Agreeing to transactional messages does not enroll you in marketing messages.
           </li>
           <li>
             <strong className="text-foreground">Message frequency:</strong> Message frequency varies with your
@@ -28,8 +30,8 @@ export default function Terms() {
             mobile carrier for details.
           </li>
           <li>
-            <strong className="text-foreground">Opt out:</strong> Reply STOP at any time to cancel. We will send one
-            message to confirm, and you will receive no further texts. To join again, opt in on our contact form as
+            <strong className="text-foreground">Opt out:</strong> Reply STOP at any time to cancel all text messages. We
+            will send one message to confirm, and you will receive no further texts. To join again, opt in on our contact form as
             you did the first time.
           </li>
           <li>
