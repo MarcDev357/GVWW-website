@@ -7,7 +7,7 @@ export const BUSINESS = {
   legalName: "2 DW Properties Inc. DBA Veteran Webworks",
   email: "marcus@veteranwebworks.com",
   supportEmail: "support@goveteranwebworks.com",
-  phone: "",
+  phone: "(951) 421-1893",
   address: "40335 Winchester Rd, Temecula, CA 92591",
   smsProgramName: "Veteran Webworks Text Messages",
   legalUpdated: "October 3, 2026",
