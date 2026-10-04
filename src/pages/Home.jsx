@@ -3,6 +3,7 @@ import Layout from "../components/Layout";
 import CtaBanner from "../components/CtaBanner";
 import ServiceGrid from "../components/ServiceGrid";
 import HomeDomainSearch from "../components/HomeDomainSearch";
+import WebChat from "../components/WebChat";
 import { FAQS } from "../data/faqs";
 
 const HOME_FAQS = FAQS.slice(0, 5);
@@ -100,6 +101,21 @@ export default function Home() {
                   </div>
                 ))}
               </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="mx-6 py-16 sm:mx-10">
+          <div className="mx-auto max-w-3xl">
+            <p className="eyebrow text-primary">Chat with us</p>
+            <h2 className="display mt-5 text-4xl font-semibold leading-tight sm:text-5xl">
+              Have a question? Ask here.
+            </h2>
+            <p className="mt-4 leading-7 text-muted-foreground">
+              Send a message and we will help you find the right next step.
+            </p>
+            <div className="mt-8 overflow-hidden rounded-2xl border border-border bg-card">
+              <WebChat />
             </div>
           </div>
         </section>

@@ -8,10 +8,12 @@ export const BUSINESS = {
   email: "marcus@veteranwebworks.com",
   supportEmail: "support@goveteranwebworks.com",
   phone: "(951) 421-1893",
-  address: "40335 Winchester Rd, Temecula, CA 92591",
+  address: "40335 Winchester Rd, Ste E 1010, Temecula, CA 92591",
   smsProgramName: "Veteran Webworks Text Messages",
   legalUpdated: "October 3, 2026",
 };
+
+export const WEBCHAT_WIDGET_ID = "7e922e12-3204-11f1-bd7d-ca52fe20ad76";
 
 export const SMS_CONSENT_VERSION = "2026-10-03-split-v2";
 
