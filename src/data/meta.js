@@ -37,8 +37,11 @@ const STATIC = {
   },
 };
 
+const ALIASES = { "/privacy-policy": "/privacy", "/terms-of-service": "/terms" };
+
 export function metaForPath(pathname) {
-  const path = pathname.length > 1 ? pathname.replace(/\/+$/, "") : pathname;
+  const trimmed = pathname.length > 1 ? pathname.replace(/\/+$/, "") : pathname;
+  const path = ALIASES[trimmed] ?? trimmed;
   if (STATIC[path]) return { ...STATIC[path], path, indexable: true };
 
   const m = path.match(/^\/services\/([^/]+)$/);
