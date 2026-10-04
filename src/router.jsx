@@ -11,6 +11,8 @@ import Process from "./pages/Process";
 import Faq from "./pages/Faq";
 import About from "./pages/About";
 import Fit from "./pages/Fit";
+import Privacy from "./pages/Privacy";
+import Terms from "./pages/Terms";
 import NotFound from "./pages/NotFound";
 
 const rootRoute = createRootRoute({
@@ -41,6 +43,8 @@ const processRoute = createRoute({ getParentRoute: () => rootRoute, path: "/proc
 const faqRoute = createRoute({ getParentRoute: () => rootRoute, path: "/faq", component: Faq });
 const aboutRoute = createRoute({ getParentRoute: () => rootRoute, path: "/about", component: About });
 const fitRoute = createRoute({ getParentRoute: () => rootRoute, path: "/fit", component: Fit });
+const privacyRoute = createRoute({ getParentRoute: () => rootRoute, path: "/privacy", component: Privacy });
+const termsRoute = createRoute({ getParentRoute: () => rootRoute, path: "/terms", component: Terms });
 
 const routeTree = rootRoute.addChildren([
   homeRoute,
@@ -53,6 +57,8 @@ const routeTree = rootRoute.addChildren([
   faqRoute,
   aboutRoute,
   fitRoute,
+  privacyRoute,
+  termsRoute,
 ]);
 
 export const router = createRouter({ routeTree, defaultNotFoundComponent: NotFound });

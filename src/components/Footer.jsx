@@ -34,7 +34,11 @@ export default function Footer() {
       </div>
       <div className="mx-auto mt-12 flex max-w-7xl flex-col gap-2 border-t border-border pt-5 text-xs text-muted-foreground sm:flex-row sm:justify-between">
         <span>Veteran-owned &middot; clear scope &middot; practical growth systems</span>
-        <span>&copy; {new Date().getFullYear()} Veteran Webworks</span>
+        <span className="flex flex-wrap items-center gap-x-5 gap-y-1">
+          <Link to="/privacy" className="transition-colors hover:text-primary">Privacy Policy</Link>
+          <Link to="/terms" className="transition-colors hover:text-primary">Terms of Service</Link>
+          <span>&copy; {new Date().getFullYear()} Veteran Webworks</span>
+        </span>
       </div>
     </footer>
   );

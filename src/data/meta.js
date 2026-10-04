@@ -22,6 +22,14 @@ const STATIC = {
     title: "Contact | Veteran Webworks",
     description: "Tell Veteran Webworks what is stuck and get a plain-English recommendation, or book a strategy call.",
   },
+  "/privacy": {
+    title: "Privacy Policy | Veteran Webworks",
+    description: "How Veteran Webworks handles your information, including text messaging consent and mobile numbers.",
+  },
+  "/terms": {
+    title: "Terms of Service | Veteran Webworks",
+    description: "Terms of service for Veteran Webworks, including the text messaging program terms.",
+  },
   "/fit": {
     title: "Find Your Growth Path | Veteran Webworks",
     description:
