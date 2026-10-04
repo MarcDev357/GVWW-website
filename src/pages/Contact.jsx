@@ -76,7 +76,7 @@ export default function Contact() {
                 <p className="font-semibold text-foreground">{BUSINESS.legalName || BUSINESS.name}</p>
                 <p>
                   <Mail className="mr-3 inline size-4 text-primary" />
-                  <a href={`mailto:${BUSINESS.email}`}>{BUSINESS.email}</a>
+                  <a href={`mailto:${BUSINESS.supportEmail}`}>{BUSINESS.supportEmail}</a>
                 </p>
                 {BUSINESS.phone && (
                   <p>
