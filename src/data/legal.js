@@ -57,6 +57,7 @@ export const PRIVACY = {
       title: "5. SMS/Text Messaging Privacy",
       blocks: [
         "Veteran Webworks does not sell or share your SMS opt-in data, mobile number, or text-messaging consent with third parties or affiliates for their marketing or promotional purposes. Text-messaging originator opt-in data and consent are excluded from marketing data sharing.",
+        "Text messaging originator opt-in data and consent will not be shared with any third parties, excluding aggregators and providers of the Text Message services.",
         "We may disclose mobile information to service providers or subcontractors only as reasonably necessary to provide or support the messaging service, such as telecommunications carriers, messaging-platform providers, hosting or customer-support providers, and vendors acting on our behalf. Those disclosures do not authorize those parties to use your SMS opt-in information for their own marketing.",
         "Message frequency varies. Message and data rates may apply. You may revoke consent by a reasonable method that clearly communicates your request. For texts, reply STOP or another recognized opt-out keyword. Reply HELP for help. We will process opt-outs as required by applicable federal law.",
       ],
