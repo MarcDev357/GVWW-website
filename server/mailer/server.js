@@ -66,11 +66,6 @@ const FIELD_LABELS = {
   name: 'Name',
   email: 'Email',
   phone: 'Phone',
-  sms_consent: 'SMS consent (transactional)',
-  sms_consent_at: 'SMS consent recorded',
-  sms_consent_ip: 'SMS consent IP',
-  sms_consent_version: 'SMS consent wording version',
-  sms_consent_text: 'SMS consent wording shown',
   business: 'Business',
   website: 'Website',
   window: 'Preferred window',
@@ -193,13 +188,6 @@ const server = http.createServer((req, res) => {
       if (k in clean || k.startsWith('_') || SKIP.has(k)) continue;
       if (typeof v === 'string') clean[k] = v.slice(0, 5000);
       else if (v != null) clean[k] = v;
-    }
-    if (data.sms_consent === true && String(data.phone || '').replace(/\D/g, '').length >= 10) {
-      clean.sms_consent = 'Yes';
-      clean.sms_consent_at = new Date().toISOString();
-      clean.sms_consent_ip = ip;
-    } else {
-      for (const k of ['sms_consent', 'sms_consent_text', 'sms_consent_version', 'sms_consent_at', 'sms_consent_ip']) delete clean[k];
     }
     clean.page = String(data.page || req.headers['referer'] || '').slice(0, 300);
 

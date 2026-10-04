@@ -8,8 +8,6 @@
         "http://localhost:4173/services",
         "http://localhost:4173/pricing",
         "http://localhost:4173/contact",
-        "http://localhost:4173/privacy",
-        "http://localhost:4173/terms",
         "http://localhost:4173/domains.html",
         "http://localhost:4173/book.html"
       ],

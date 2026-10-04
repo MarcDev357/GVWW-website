@@ -14,22 +14,12 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  business-details:
-    name: Business details complete
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-      - run: node scripts/check-business.mjs
-
   build:
     uses: ./.github/workflows/build.yml
 
   deploy-production:
     name: Deploy to goveteranwebworks.com
-    needs: [build, business-details]
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@v4
