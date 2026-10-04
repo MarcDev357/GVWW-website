@@ -67,8 +67,6 @@ const FIELD_LABELS = {
   email: 'Email',
   phone: 'Phone',
   sms_consent: 'SMS consent (transactional)',
-  sms_marketing_consent: 'SMS consent (marketing)',
-  sms_marketing_consent_text: 'SMS marketing wording shown',
   sms_consent_at: 'SMS consent recorded',
   sms_consent_ip: 'SMS consent IP',
   sms_consent_version: 'SMS consent wording version',
@@ -196,17 +194,12 @@ const server = http.createServer((req, res) => {
       if (typeof v === 'string') clean[k] = v.slice(0, 5000);
       else if (v != null) clean[k] = v;
     }
-    const validPhone = String(data.phone || '').replace(/\D/g, '').length >= 10;
-    const SMS_KEYS = ['sms_consent', 'sms_consent_text', 'sms_marketing_consent', 'sms_marketing_consent_text', 'sms_consent_version', 'sms_consent_at', 'sms_consent_ip'];
-    const tx = data.sms_consent === true && validPhone;
-    const mk = data.sms_marketing_consent === true && validPhone;
-    for (const k of SMS_KEYS) delete clean[k];
-    if (tx || mk) {
-      if (tx) { clean.sms_consent = 'Yes'; clean.sms_consent_text = String(data.sms_consent_text || '').slice(0, 2000); }
-      if (mk) { clean.sms_marketing_consent = 'Yes'; clean.sms_marketing_consent_text = String(data.sms_marketing_consent_text || '').slice(0, 2000); }
-      clean.sms_consent_version = String(data.sms_consent_version || '').slice(0, 80);
+    if (data.sms_consent === true && String(data.phone || '').replace(/\D/g, '').length >= 10) {
+      clean.sms_consent = 'Yes';
       clean.sms_consent_at = new Date().toISOString();
       clean.sms_consent_ip = ip;
+    } else {
+      for (const k of ['sms_consent', 'sms_consent_text', 'sms_consent_version', 'sms_consent_at', 'sms_consent_ip']) delete clean[k];
     }
     clean.page = String(data.page || req.headers['referer'] || '').slice(0, 300);
 

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Mail, Phone, MapPin } from "lucide-react";
 import Layout from "../components/Layout";
-import { BUSINESS, SMS_TRANSACTIONAL_TEXT, SMS_MARKETING_TEXT, SMS_CONSENT_VERSION } from "../data/business";
+import { BUSINESS, SMS_CONSENT_TEXT, SMS_CONSENT_VERSION } from "../data/business";
 import { SERVICE_NAMES } from "../data/services";
 import logo from "../assets/veteran-webworks-logo.png";
 
@@ -20,10 +20,9 @@ export default function Contact() {
       return;
     }
     const smsConsent = form.get("sms_consent") === "on";
-    const smsMarketing = form.get("sms_marketing_consent") === "on";
     const phone = String(form.get("phone") ?? "").trim();
-    if ((smsConsent || smsMarketing) && phone.replace(/\D/g, "").length < 10) {
-      setError("Add your mobile number to receive text messages, or uncheck the text message boxes.");
+    if (smsConsent && phone.replace(/\D/g, "").length < 10) {
+      setError("Add your mobile number to receive text messages, or uncheck the text message box.");
       return;
     }
     setError("");
@@ -38,13 +37,9 @@ export default function Contact() {
         phone,
         ...(smsConsent && {
           sms_consent: true,
-          sms_consent_text: SMS_TRANSACTIONAL_TEXT,
+          sms_consent_text: SMS_CONSENT_TEXT,
+          sms_consent_version: SMS_CONSENT_VERSION,
         }),
-        ...(smsMarketing && {
-          sms_marketing_consent: true,
-          sms_marketing_consent_text: SMS_MARKETING_TEXT,
-        }),
-        ...((smsConsent || smsMarketing) && { sms_consent_version: SMS_CONSENT_VERSION }),
         best_time: String(form.get("best_time") ?? ""),
         service: String(form.get("service") ?? ""),
         message: String(form.get("message") ?? ""),
@@ -177,24 +172,19 @@ export default function Contact() {
                 />
               </label>
 
-              {[
-                ["sms_consent", SMS_TRANSACTIONAL_TEXT],
-                ["sms_marketing_consent", SMS_MARKETING_TEXT],
-              ].map(([id, text]) => (
-                <div key={id} className="flex items-start gap-3 rounded-lg border border-border bg-background/50 p-4">
-                  <input
-                    id={id}
-                    name={id}
-                    type="checkbox"
-                    className="mt-1 size-4 shrink-0 accent-[var(--color-primary)]"
-                  />
-                  <label htmlFor={id} className="text-xs leading-5 text-muted-foreground">
-                    {text} See our{" "}
-                    <Link to="/privacy" className="text-primary underline">Privacy Policy</Link> and{" "}
-                    <Link to="/terms" className="text-primary underline">Terms of Service</Link>.
-                  </label>
-                </div>
-              ))}
+              <div className="flex items-start gap-3 rounded-lg border border-border bg-background/50 p-4">
+                <input
+                  id="sms_consent"
+                  name="sms_consent"
+                  type="checkbox"
+                  className="mt-1 size-4 shrink-0 accent-[var(--color-primary)]"
+                />
+                <label htmlFor="sms_consent" className="text-xs leading-5 text-muted-foreground">
+                  {SMS_CONSENT_TEXT} See our{" "}
+                  <Link to="/privacy" className="text-primary underline">Privacy Policy</Link> and{" "}
+                  <Link to="/terms" className="text-primary underline">Terms of Service</Link>.
+                </label>
+              </div>
 
               {error && (
                 <p className="text-sm text-destructive" role="alert">
